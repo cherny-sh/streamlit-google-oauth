@@ -5,9 +5,9 @@ from setuptools import setup
 setup(
     name="streamlit_google_oauth",
     version="0.1",
-    url="https://github.com/hunkim/streamlit-google-oauth",
+    url="https://github.com/xionglian/streamlit-google-oauth",
     author="Sung Kim",
-    author_email="hunkim@gmail.com",
+    author_email="xionglian93@gmail.com",
     py_modules=["streamlit_google_oauth"],
     packages=["streamlit_google_oauth"],
     install_requires=[
