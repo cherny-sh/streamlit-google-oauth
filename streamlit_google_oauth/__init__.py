@@ -49,7 +49,7 @@ def login_button(authorization_url, app_name, app_desc):
     st.markdown(container, unsafe_allow_html=True)
 
 
-def logout_button(button_text, login_info):
+def logout_button(button_text, login_info='login_info'):
     if st.button(button_text):
         asyncio.run(
             revoke_token(
