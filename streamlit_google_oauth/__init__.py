@@ -49,7 +49,7 @@ def login_button(authorization_url, app_name, app_desc):
     st.markdown(container, unsafe_allow_html=True)
 
 
-def logout_button(button_text):
+def logout_button(button_text, login_info):
     if st.button(button_text):
         asyncio.run(
             revoke_token(
@@ -60,6 +60,8 @@ def logout_button(button_text):
         st.session_state.user_email = None
         st.session_state.user_id = None
         st.session_state.token = None
+        if login_info in st.session_state and st.session_state[login_info] is not None:
+            st.session_state[login_info] = None
         st.experimental_rerun()
 
 
@@ -70,6 +72,7 @@ def login(
     app_name="Continue with Google",
     app_desc="",
     logout_button_text="Logout",
+    logout_button_delete_object = "login_info"
 ):
     st.session_state.client = GoogleOAuth2(client_id, client_secret)
     authorization_url = asyncio.run(
@@ -109,7 +112,7 @@ def login(
                             client=st.session_state.client, token=token["access_token"]
                         )
                     )
-                    logout_button(button_text=logout_button_text)
+                    logout_button(button_text=logout_button_text, login_info=login_info)
                     return (st.session_state.user_id, st.session_state.user_email)
     else:
         logout_button(button_text=logout_button_text)
