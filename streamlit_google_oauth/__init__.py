@@ -72,7 +72,8 @@ def login(
     app_name="Continue with Google",
     app_desc="",
     logout_button_text="Logout",
-    logout_button_delete_object = "login_info"
+    logout_button_delete_object = "login_info",
+    enable_logout=False
 ):
     st.session_state.client = GoogleOAuth2(client_id, client_secret)
     authorization_url = asyncio.run(
@@ -112,8 +113,10 @@ def login(
                             client=st.session_state.client, token=token["access_token"]
                         )
                     )
-                    logout_button(button_text=logout_button_text, login_info=logout_button_delete_object)
+                    if enable_logout:
+                        logout_button(button_text=logout_button_text, login_info=logout_button_delete_object)
                     return (st.session_state.user_id, st.session_state.user_email)
     else:
-        logout_button(button_text=logout_button_text)
+        if enable_logout:
+            logout_button(button_text=logout_button_text, login_info=logout_button_delete_object)
         return (st.session_state.user_id, st.session_state.user_email)
