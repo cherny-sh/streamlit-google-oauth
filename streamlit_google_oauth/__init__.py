@@ -87,7 +87,7 @@ def login(
 
     if st.session_state.token is None:
         try:
-            code = st.query_params()["code"]
+            code = st.query_params["code"]
         except:
             login_button(authorization_url, app_name, app_desc)
         else:
