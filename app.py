@@ -4,12 +4,10 @@ from dotenv import load_dotenv
 import streamlit_google_oauth as oauth
 
 load_dotenv()
-# client_id = os.environ["GOOGLE_CLIENT_ID"]
-# client_secret = os.environ["GOOGLE_CLIENT_SECRET"]
-# redirect_uri = os.environ["GOOGLE_REDIRECT_URI"]
-client_id="789077120900-70qaug9ll1u978p4ue0q8lrspgj69ho7.apps.googleusercontent.com"
-client_secret="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"
-redirect_uri="http://127.0.0.1.nip.io:8501/dashboard/"
+client_id = os.environ["GOOGLE_CLIENT_ID"]
+client_secret = os.environ["GOOGLE_CLIENT_SECRET"]
+redirect_uri = os.environ["GOOGLE_REDIRECT_URI"]
+#redirect_uri="http://127.0.0.1.nip.io:8501/dashboard/"
 
 if __name__ == "__main__":
     app_name = '''
